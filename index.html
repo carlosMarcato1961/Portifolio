@@ -1,0 +1,176 @@
+<!-- CARLOS JOSÉ MARCATO    RU: 4739077-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio CARLOS JOSÉ MARCATO</title>
+    <!--COMEÇA CSS-->   
+    <style>
+        /* AQUI O MENU QUE VAI FICAR FIXO NO TOPO */
+        .menu {
+            background-color: #180101;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .menu-item {
+            background-color: rgb(65, 60, 60);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            color: aliceblue;
+        }
+        /* MENU MUDA DE COR QUANDO O MOUSE PASSA POR CIMA */
+        .menu-item:hover {
+            background-color: #75d86c;
+        }
+        /* ABAIXO CONTAINER QUE RECEBERÁ AS PAGINAS MENOS A DO FORMULÁRIO */
+        .container {
+            margin-top: 50px; 
+            background-color: #75d86c;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            height: auto;
+        }
+        /* AS IMAGENS QUE SERÃO MOSTRADAS NO CONTAINER, USANDO O SELETOR IMG */
+        img {
+            width: 90%;
+            height: auto;
+            }
+
+        /* ABAIXO O FORMULARIO */
+        .form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #75d86c;
+        }
+        .bot{
+            background-color: rgb(8, 102, 20);
+            width: 20%;
+            color: aliceblue;
+        }
+        .bot:hover{
+            background-color: #75d86c;
+        }
+
+        .entrada{
+            width: 70%;
+        }
+        /* ABAIXO O CSS DO BODY */
+        .corpo{
+            background-color: #12310f;
+            padding: 20px;
+        }
+
+
+
+    </style>
+</head>
+<!-- COMEÇA O HTML -->
+<body class="corpo">
+    <!-- BOTÕES DO MENU -->
+    <div class="menu">
+        <button class="menu-item" onclick="conteudo_home()" >Home</button>
+        <button class="menu-item" onclick="conteudo_sobre()" >Sobre</button>
+        <button class="menu-item" onclick="conteudo_formacao()">Formação</button>
+        <button class="menu-item" onclick="conteudo_portfolio()">Portfólio</button>
+        <button class="menu-item" onclick="conteudo_contato()">Contato</button>
+    </div>
+    <!-- ESTA DIV INICIALIZA O APLICATIVO COM A PAGINA HOME -->
+    <div class="container" id="imagem">
+                <img src="images/pagina_inicial.png" alt="">
+    </div>
+    <!-- O FORMULÁRIO FICA ESCONDIDO POR PADRÃO É MOSTRADO APENAS NO CONTATO -->
+    <form  class="form" id="form" hidden>
+        <h2 hidden id="h2">FORMULÁRIO DE CONTATO</h2>
+        <label for="nome" id="nome" hidden>Nome:</label><br>
+        <input type="text" class="entrada" id="ent_nome" name="nome" width="100px" required hidden><br><br>
+        <label for="email" id="email" hidden>Email:</label><br>
+        <input type="email" class="entrada" id="ent_email" name="email" required hidden><br><br>
+        <label for="mensagem" id="mensagem" hidden>Mensagem:</label><br>
+        <textarea  class="entrada" id="ent_mensagem" required hidden>Escreva aqui:</textarea><br><br>
+        <button class="bot"  id="enviar" onclick="enviar_mens()" hidden >Enviar</button><br><br>
+    </form>
+    </div>
+</body>
+<!-- COMEÇA O JAVASCRIPT -->
+<script>
+    // FUNÇÃO QUE MANTEM O FORMULÁRIO ESCONDIDO USANDO A PROPRIEDADE HIDDEN
+    function cont_contato() {
+        document.getElementById("form").hidden = true;
+        document.getElementById("h2").hidden = true;
+        document.getElementById("nome").hidden = true;
+        document.getElementById("ent_nome").hidden = true;
+        document.getElementById("email").hidden = true;
+        document.getElementById("ent_email").hidden = true;
+        document.getElementById("mensagem").hidden = true;
+        document.getElementById("enviar").hidden = true;
+        document.getElementById("ent_mensagem").hidden = true;
+
+    }
+    // FUNÇÃO QUE ABRE UMA MENSAGEM QUANDO CLICAR EM ENVIAR NO CONTATO
+    function enviar_mens() {
+        alert("Mensagem enviada com sucesso!");
+    }
+    function conteudo_home() {
+        const container = document.getElementById('imagem');//AQUI BUSCAMOS O COMPONENTE COM O ID=IMAGEM
+        // Limpar o conteúdo do container
+        container.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = 'images/pagina_inicial.png'; 
+        container.appendChild(img);//A IMAGEM CORRESPONDENTE É ADICIONADA NO CONTAINER
+        cont_contato();//AQUI É CHAMADA A FUNÇÃO QUE ESCONDE O FORMULÁRIO
+        }
+    function conteudo_sobre() {
+        const container = document.getElementById('imagem');
+        // Limpar o conteúdo do container
+        container.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = 'images/pagina_sobre.png'; 
+        container.appendChild(img);
+        cont_contato();
+        }
+    function conteudo_formacao() {
+        const container = document.getElementById('imagem');
+        // Limpar o conteúdo do container
+        container.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = 'images/pagina_formacao.png'; 
+        container.appendChild(img);
+        cont_contato();}
+    function conteudo_portfolio() {
+        const container = document.getElementById('imagem');
+        // Limpar o conteúdo do container
+        container.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = 'images/pagina_portfolio.png'; 
+        container.appendChild(img);
+        cont_contato();}
+        //ABAIXO A FUNÇÃO QUE ABRE O CONTATO, TORNANDO VISÍVEIS OS COMPONENTES DO FORMULÁRIO
+    function conteudo_contato() {
+        //limpar o container
+        imagem.innerHTML = '';
+        document.getElementById("form").hidden = false;
+        document.getElementById("h2").hidden = false;
+        document.getElementById("nome").hidden = false;
+        document.getElementById("email").hidden = false;
+        document.getElementById("mensagem").hidden = false;
+        document.getElementById("enviar").hidden = false;
+        document.getElementById("ent_nome").hidden = false;
+        document.getElementById("ent_email").hidden = false;
+        document.getElementById("ent_mensagem").hidden = false;
+        }
+    
+        
+</script>
+</html>
